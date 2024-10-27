@@ -1,0 +1,23 @@
+services:
+  redis:
+    image: "redis:alpine"
+    network_mode: bridge
+    ports:
+      - "6379:6379"
+  mongo:
+    image: mongo:4.2.0
+    network_mode: bridge
+    volumes:
+      - mongo_data:/data/db
+    ports:
+      - "27017:27017"
+  elasticsearch:
+    image: elasticsearch:7.16.1
+    environment:
+      discovery.type: single-node
+      ES_JAVA_OPTS: "-Xms1024m -Xmx1024m"
+    ports:
+      - "9200:9200"
+
+volumes:
+  mongo_data:

@@ -1,0 +1,5 @@
+runs
+.vscode
+.venv
+yolo*
+__pycache__
